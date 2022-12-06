@@ -7,19 +7,19 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <link className="navbar__link" to="/about">About</link>
+                <link className="navbar__link" to="/poems">Home</link>
             </li>
             <li className="navbar__item active">
-                <link className="navbar__link" to="/poems">View Poems</link>
+                <link className="navbar__link" to="/about">About</link>
             </li>
             <li className="navbar__item active">
                 <link className="navbar__link" to="submitpoems">Submit Poems</link>
             </li>
             {
-                localStorage.getItem("iwfm_user")
+                localStorage.getItem("capstone_user")
                 ? <li className="navbar__item navbar__logout">
                     <link className="navbar__link" to="" onClick={() => {
-                        localStorage.removeItem("iwfm_user")
+                        localStorage.removeItem("capstone_user")
                         navigate("/", {replace: true})
                     }}>Logout</link>
                 </li>
