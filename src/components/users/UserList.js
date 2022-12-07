@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const UserList = () => {
     const [users, setUsers] = useState([])

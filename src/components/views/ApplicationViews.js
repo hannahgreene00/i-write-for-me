@@ -1,6 +1,11 @@
-export const ApplicationViews = () => {
-  // const localProjectUser = localStorage.getItem("capstone_user");
-  // const projectUserObject = JSON.parse(localProjectUser);
+import { UserViews } from "./UserViews";
 
-  return "<h1>A Blank Page!!</h1>";
+export const ApplicationViews = () => {
+  const localProjectUser = localStorage.getItem("capstone_user");
+  const projectUserObject = JSON.parse(localProjectUser);
+
+  if (projectUserObject.user) {
+    return <UserViews />
+  }
 };
+
