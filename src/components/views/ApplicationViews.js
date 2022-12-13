@@ -4,7 +4,7 @@ export const ApplicationViews = () => {
   const localProjectUser = localStorage.getItem("capstone_user");
   const projectUserObject = JSON.parse(localProjectUser);
 
-  if (projectUserObject.user) {
+  if (projectUserObject) {
     return <UserViews />
   }
 };

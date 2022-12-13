@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom"
 
 export const PoemForm = () => {
     
-    const [poem, update] = useState({
-        poem: ""
+    const [poem, setPoem] = useState({
+        poem: "",
+        title: "",
+        date: ""
     })
 
     const navigate = useNavigate()
@@ -13,26 +15,33 @@ export const PoemForm = () => {
     const projectUserObject = JSON.parse(localProjectUser);
 
     const handleSaveButtonClick = (event) => {
+        const poemToSendToAPI = {
+            userId: projectUserObject.id,
+            poem: poem.poem,
+            datePosted: poem.date
+        }
         event.preventDefault()
+        sendPoems(poemToSendToAPI)
     }
 
-    const poemToSendToAPI = {
-        userId: projectUserObject.id,
-        poem: poem.poem,
-        datePosted: poem.date
-    }
+   
 
-    return fetch(``, {
+    const sendPoems = async (poemToSendToAPI) => {
+        const options = {
         method: "POST",
         headers: {
-            "Content-type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(poemToSendToAPI)
-    })
-    .then(response => response.json())
-    .then (() => {
+    }
+
+
+    const response = await fetch(`http://localhost:8088/poems`, options);
+    await response.json()
         navigate("/poems")
-    })
+    }
+
+
 
     return (
         <form className="poemForm">
@@ -50,7 +59,7 @@ export const PoemForm = () => {
                         (evt) => {
                             const copy = {...poem}
                             copy.poem = evt.target.value
-                            update(copy)
+                            setPoem(copy)
                         }
                     } />
                 </div>

@@ -14,7 +14,7 @@ export const UserViews = () => {
                     <Outlet />
                 </>
             }>
-                <Route path="poems" element={ <PoemContainer />} />
+                <Route path="" element={ <PoemContainer />} />
                 <Route path="users" element={ <UserList />} />
 
             </Route>
