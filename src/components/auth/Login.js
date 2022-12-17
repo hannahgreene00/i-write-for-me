@@ -22,7 +22,7 @@ export const Login = () => {
             })
           );
 
-          navigate("/");
+          navigate("/poems");
         } else {
           window.alert("Invalid login");
         }
